@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'meetings',
     'api',
+    'phonenumber_field',
 ]
 
 MIDDLEWARE = [
@@ -82,6 +83,8 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+AUTH_USER_MODEL = 'meetings.User'
 
 
 # Password validation
