@@ -9,7 +9,7 @@ class User(AbstractUser):
 
     def clean(self):
         if not self.phone_number:
-            raise ValidationError("Phone number is required.")
+            raise ValidationError('Phone number is required.')
 
         super().clean()
 
@@ -20,12 +20,12 @@ class Contact(models.Model):
     phone_number = PhoneNumberField(unique=True)
 
     class Meta:
-        verbose_name = "Contact"
-        verbose_name_plural = "Contacts"
+        verbose_name = 'Contact'
+        verbose_name_plural = 'Contacts'
 
     def __str__(self):
         return (
-            f"Contact {self.first_name}, {self.phone_number}"
+            f'Contact {self.first_name}, {self.phone_number}'
         )
         
 
@@ -35,17 +35,17 @@ class Meeting(models.Model):
     link = models.URLField(max_length=200)
     start_date_time = models.DateTimeField(auto_now=False, auto_now_add=False)
     message = models.CharField(max_length=255)
-    notified_contacts = models.ForeignKey(Contact, on_delete=models.SET_NULL, null=True)
+    notified_contacts = models.ForeignKey(Contact, on_delete=models.SET_NULL, null=True, related_name='notification_meetings')
 
     class Meta:
         get_latest_by = 'start_date_time'
         ordering = ['start_date_time']
-        verbose_name = "Meeting"
-        verbose_name_plural = "Meetings"
+        verbose_name = 'Meeting'
+        verbose_name_plural = 'Meetings'
 
     def __str__(self):
         return (
-            f"Meeting {self.name}, {self.start_date_time}"
+            f'Meeting {self.name}, {self.start_date_time}'
         )    
 
         
