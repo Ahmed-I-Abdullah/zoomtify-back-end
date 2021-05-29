@@ -25,7 +25,7 @@ class Contact(models.Model):
 
     def __str__(self):
         return (
-            f'Contact {self.first_name}, {self.phone_number}'
+            f'Contact: {self.first_name}, {self.phone_number}'
         )
         
 
@@ -45,11 +45,5 @@ class Meeting(models.Model):
 
     def __str__(self):
         return (
-            f'Meeting {self.name}, {self.start_date_time}'
+            f'Meeting: {self.name}, {self.start_date_time}'
         )    
-
-        
-
-
-
-
