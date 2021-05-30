@@ -120,6 +120,7 @@ celerybeat.pid
 
 # Environments
 # .env
+whatsappNotifier/.env
 .env/
 .venv/
 env/
