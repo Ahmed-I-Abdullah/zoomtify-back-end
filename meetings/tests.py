@@ -1,6 +1,7 @@
 from django.test import TestCase
-from meetings.models import Meeting, Contact
+from meetings.models import User, Meeting, Contact
 import datetime
+from django.core.exceptions import ValidationError
 
 class TestCreateContact(TestCase):
     @classmethod
@@ -19,6 +20,10 @@ class TestCreateContact(TestCase):
         self.assertEqual(first_name, "test")
         self.assertEqual(last_name, "contact")
         self.assertEqual(phone_number, "+16135550141")
+
+    def test_str(self):
+        contact = Contact.objects.get(id=1)
+        self.assertEqual(str(contact), "Contact: test, +16135550141")      
 
 class TestCreateMeeting(TestCase):
     @classmethod
@@ -49,9 +54,11 @@ class TestCreateMeeting(TestCase):
         self.assertEqual(link, "http://example.com/bike")
         self.assertEqual(start_date_time, "2021-11-28 23:55:59.342380+00:00")
 
-                
+    def test_str(self):
+        meeting = Meeting.objects.get(id=1)
+        self.assertEqual(str(meeting), "Meeting: refinement meeting, 2021-11-28 23:55:59.342380+00:00")   
 
-
-
-
-
+class TestCreateUser(TestCase):
+    def test_phone_exception(self):
+      test_user = User.objects.create(username='test_use1', password='12345678')
+      self.assertRaises(ValidationError, msg='Phone number is required.')   
