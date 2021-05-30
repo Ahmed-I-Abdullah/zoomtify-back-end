@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'meetings',
     'api',
     'phonenumber_field',
+    'django_apscheduler',
 ]
 
 MIDDLEWARE = [
