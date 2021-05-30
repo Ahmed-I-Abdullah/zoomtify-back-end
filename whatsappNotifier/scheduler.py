@@ -1,12 +1,15 @@
 from .whatsappApi import send_message
 from datetime import datetime
-from apscheduler.scheduler import Scheduler
+from datetime import datetime
+from apscheduler.schedulers.blocking import BlockingScheduler
 
-def schedule_message(sender_number, receiver_number, date_time):
-    scheduler = Scheduler()
+def schedule_message(receiver_number, date_time):
+    scheduler = BlockingScheduler()
+    def my_job():
+         send_message(receiver_number, date_time)
+    date_time_obj = datetime.strptime(date_time, '%Y-%m-%dT%H:%M')
+    job = scheduler.add_job(
+        my_job
+        , run_date=date_time_obj)
+
     scheduler.start()
-    my_job = send_message(sender_number, receiver_number, date_time)
-    job = scheduler.add_date_job(my_job, date_time)
-
-
-    
