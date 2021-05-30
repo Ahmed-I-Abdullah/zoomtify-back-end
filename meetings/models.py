@@ -35,7 +35,7 @@ class Meeting(models.Model):
     link = models.URLField(max_length=200)
     start_date_time = models.DateTimeField(auto_now=False, auto_now_add=False)
     message = models.CharField(max_length=255)
-    notified_contacts = models.ForeignKey(Contact, on_delete=models.SET_NULL, null=True, related_name='notification_meetings')
+    notified_contacts = models.ManyToManyField(Contact, related_name='notification_meetings')
 
     class Meta:
         get_latest_by = 'start_date_time'
