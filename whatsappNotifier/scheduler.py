@@ -5,8 +5,10 @@ from apscheduler.schedulers.blocking import BlockingScheduler
 
 def schedule_message(receiver_number, date_time):
     scheduler = BlockingScheduler()
+    # def my_job():
+    #      send_message(receiver_number, date_time)
     def my_job():
-         send_message(receiver_number, date_time)
+         print("Message Sent!")
     date_time_obj = datetime.strptime(date_time, '%Y-%m-%dT%H:%M')
     job = scheduler.add_job(
         my_job
