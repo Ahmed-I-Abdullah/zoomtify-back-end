@@ -18,6 +18,7 @@ class Contact(models.Model):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255, blank=True)
     phone_number = PhoneNumberField(unique=True)
+    associated_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='contacts')
 
     class Meta:
         verbose_name = 'Contact'

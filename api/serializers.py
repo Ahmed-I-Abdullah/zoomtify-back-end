@@ -10,4 +10,4 @@ class MeetingSerializer(serializers.ModelSerializer):
 class ContactSerializer(serializers.ModelSerializer):
     class Meta:
         model = Contact      
-        fields = ('id', 'first_name', 'last_name', 'phone_number')
+        fields = ('id', 'first_name', 'last_name', 'phone_number', 'associated_user')
