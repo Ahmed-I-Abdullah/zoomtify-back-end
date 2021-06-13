@@ -1,6 +1,6 @@
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
-from django.contrib.auth.models import User
+from users.models import User
 
 class Contact(models.Model):
     id = models.BigAutoField(primary_key=True)

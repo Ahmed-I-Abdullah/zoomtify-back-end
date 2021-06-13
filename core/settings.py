@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'meetings',
     'api',
+    'users',
     'phonenumber_field',
     'django_apscheduler',
     'corsheaders',
@@ -133,10 +134,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
-    ]
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
 }
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://192.168.232.1:3000",
 ]
+
+AUTH_USER_MODEL='users.User'
