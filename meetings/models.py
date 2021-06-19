@@ -1,6 +1,6 @@
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
-from django.contrib.auth.models import User
+from users.models import User
 
 class Contact(models.Model):
     id = models.BigAutoField(primary_key=True)
@@ -15,7 +15,7 @@ class Contact(models.Model):
 
     def __str__(self):
         return (
-            f'Contact: {self.first_name}, {self.phone_number}'
+            f'Contact: {self.first_name} {self.last_name}, {self.phone_number}'
         )
         
 
